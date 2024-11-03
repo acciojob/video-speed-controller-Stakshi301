@@ -1,9 +1,9 @@
-const inputs = document.querySelectorAll('.controls input');
+const video = document.getElementById('video');
+const speedBar = document.getElementById('speed-bar');
+const speedSlider = document.getElementById('speed-slider');
 
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-    }
-
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+// Update video playback speed and display speed
+speedSlider.addEventListener('input', () => {
+    video.playbackRate = parseFloat(speedSlider.value);
+    speedBar.textContent = `${speedSlider.value}×`;
+});
